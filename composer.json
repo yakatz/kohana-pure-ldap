@@ -1,0 +1,13 @@
+{
+    "name": "bhspitmonkey/kohana-pure-ldap",
+    "description": "An LDAP auth module for Kohana with no external dependencies.",
+    "type": "library",
+    "license": "New BSD License",
+    "authors": [
+        {
+            "name": "Stephen Eisenhauer",
+            "email": "bhs2007@gmail.com"
+        }
+    ],
+    "require": {}
+}
