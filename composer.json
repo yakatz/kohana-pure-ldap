@@ -1,7 +1,7 @@
 {
     "name": "bhspitmonkey/kohana-pure-ldap",
     "description": "An LDAP auth module for Kohana with no external dependencies.",
-    "type": "library",
+    "type": "kohana-module",
     "license": "New BSD License",
     "authors": [
         {
