@@ -48,12 +48,13 @@ class Kohana_Auth_PureLDAP extends Auth {
 		$conn = ldap_connect($host);
 		
 		// Prepare bind attempt
-		$rdn_suffix = $ldap_cfg->get('rdn_suffix');
+		$rdn_format = $ldap_cfg->get('rdn_format');
+		$rdn_username = sprintf($rdn_format, $username);
 		
 		// If bind attempt succeeds, credentials are valid.
 		try
 		{
-			if (ldap_bind($conn, $username.$rdn_suffix, $password))
+			if (ldap_bind($conn, $rdn_username, $password))
 			{
 				// Login is successful. Retrieve additional user info from server.
 				$dn = $ldap_cfg->get('dn');
@@ -67,7 +68,7 @@ class Kohana_Auth_PureLDAP extends Auth {
 					$attrs_values[] = $roles_attr;
 				
 				// Perform the lookup
-				ldap_bind($conn, $username.$rdn_suffix, $password);
+				ldap_bind($conn, $rdn_username, $password);
 				$search = ldap_search($conn, $dn, $filter, $attrs_values);
 				$results = ldap_get_entries($conn, $search);
 				$result = $results[0];	// Only interested in one result

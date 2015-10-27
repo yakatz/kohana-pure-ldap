@@ -9,7 +9,7 @@ return array(
 	
 	// Suffix added to usernames before bind attempts. 
 	// Normally '@' followed by a domain.
-	'rdn_suffix'	=> '@example.com',
+	'rdn_format'	=> '%s@example.com',
 	
 	/* Search parameters used for fetching user attributes after login */
 
