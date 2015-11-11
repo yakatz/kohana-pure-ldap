@@ -58,7 +58,7 @@ class Kohana_Auth_PureLDAP extends Auth {
 			{
 				// Login is successful. Retrieve additional user info from server.
 				$dn = $ldap_cfg->get('dn');
-				$filter = "(cn=$username)";
+				$filter = "(uid=$username)";
 				$attrs_dict = $ldap_cfg->get('attributes');
 				$attrs_values = array_values($attrs_dict);
 				
