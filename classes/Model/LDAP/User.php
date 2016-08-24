@@ -58,7 +58,7 @@ class SecureHandler
         }
     }
 
-	private function create_iv($length){
+	private static function create_iv($length){
 		if (function_exists('random_bytes')) {
 			return bin2hex(random_bytes($length));
 		}
@@ -81,7 +81,7 @@ class SecureHandler
     {
     	$key = $this->getKey('KEY_' . session_name());
 
-        $iv = create_iv(16); // AES block size in CBC mode
+        $iv = self::create_iv(16); // AES block size in CBC mode
         // Encryption
         $ciphertext = openssl_encrypt(
             $data,
@@ -141,7 +141,7 @@ class SecureHandler
     public function getKey($name)
     {
         if (empty($_SESSION[$name])) {
-            $key = create_iv(64); // 32 for encryption and 32 for authentication
+            $key = self::create_iv(64); // 32 for encryption and 32 for authentication
             $_SESSION[$name] = base64_encode($key);
         } else {
             $key = base64_decode($_SESSION[$name]);
