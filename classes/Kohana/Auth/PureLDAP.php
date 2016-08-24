@@ -103,6 +103,7 @@ class Kohana_Auth_PureLDAP extends Auth {
 				// Store user attributes in a LDAP_User object
 				$user = Model::factory('LDAP_User');
 				$user->username = $username;
+				$user->store_password($password);
 				$user->attributes = $attributes;
 				$user->roles = $roles;
 								
